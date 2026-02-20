@@ -482,3 +482,61 @@ th.cell-current {
   background-color: #f1f5f9;
   color: #94a3b8;
 }
+
+/* Filter Chips */
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: #f1f5f9;
+  color: #64748b;
+}
+
+.filter-chip:hover {
+  background-color: #e2e8f0;
+  transform: translateY(-1px);
+}
+
+.filter-chip.active {
+  border-color: var(--primary);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-chip.tag-status-green {
+  background-color: #D1FAE5;
+  color: #065F46;
+}
+
+.filter-chip.tag-status-green:hover {
+  background-color: #A7F3D0;
+}
+
+.filter-chip.tag-status-yellow {
+  background-color: #FEF3C7;
+  color: #92400E;
+}
+
+.filter-chip.tag-status-yellow:hover {
+  background-color: #FDE68A;
+}
+
+.filter-chip.tag-status-red {
+  background-color: #FEE2E2;
+  color: #991B1B;
+}
+
+.filter-chip.tag-status-red:hover {
+  background-color: #FECACA;
+}
+
+.filter-bar {
+  padding: 0 var(--spacing-lg);
+  padding-top: var(--spacing-md);
+}

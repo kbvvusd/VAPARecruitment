@@ -1,0 +1,484 @@
+/* 
+ * Recruitment Dashboard 2024
+ * Modern, clean, and responsive design.
+ */
+
+:root {
+  /* Colors */
+  /* Brand Blue from VVUSD Logo */
+  --primary: #235688;
+  --primary-hover: #1A436A;
+
+  /* Brand Yellow from VAPA Logo */
+  --accent: #FFCE4E;
+
+  --secondary: #64748B;
+  /* Slate-500 */
+
+  --bg-body: #F8FAFC;
+  --bg-sidebar: #1E4B75;
+  /* Deep Brand Blue */
+  --bg-card: #FFFFFF;
+
+  --text-main: #0F172A;
+  /* Slate-900 */
+  --text-muted: #64748B;
+  /* Slate-500 */
+  --text-sidebar: #F1F5F9;
+  /* Slate-100 */
+
+  --border-color: #E2E8F0;
+  /* Slate-200 */
+
+  /* Status Colors */
+  --status-good-bg: #D1FAE5;
+  /* Emerald-100 */
+  --status-good-text: #065F46;
+  /* Emerald-800 */
+  --status-bad-bg: #FEE2E2;
+  /* Red-100 */
+  --status-bad-text: #991B1B;
+  /* Red-800 */
+  --status-warn-bg: #FEF3C7;
+  /* Amber-100 */
+  --status-warn-text: #92400E;
+  /* Amber-800 */
+
+  /* Spacing */
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Shadow */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Reset & Base */
+* {
+  box-sizing: border_box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  height: 100vh;
+  overflow: hidden;
+  /* App-like feel */
+  display: flex;
+}
+
+/* No-Sidebar Layout */
+.app-container.no-sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+/* School Dropdown Selector */
+.school-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.school-selector-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.school-dropdown {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary);
+  background-color: #f0f4f8;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 6px 12px;
+  padding-right: 32px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23235688' d='M6 8.825L.35 3.175l.7-.7L6 7.425l4.95-4.95.7.7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  min-width: 260px;
+}
+
+.school-dropdown:hover {
+  border-color: var(--primary);
+}
+
+.school-dropdown:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(35, 86, 136, 0.15);
+}
+
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.top-bar {
+  background-color: var(--bg-card);
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.top-bar-logo {
+  width: 180px;
+  height: auto;
+}
+
+.top-bar-branding {
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar-title {
+  font-family: 'Shrikhand', cursive;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--primary);
+  line-height: 1.25;
+  letter-spacing: 0.5px;
+}
+
+.top-bar-subtitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  font-family: inherit;
+  font-size: 0.875rem;
+}
+
+
+.btn-primary {
+  background-color: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background-color: #fff;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+/* Content Area */
+.content-area {
+  flex: 1;
+  padding: var(--spacing-lg);
+  overflow-y: auto;
+  position: relative;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-muted);
+}
+
+.empty-state i {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.5;
+}
+
+/* Detailed Views */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 160px);
+  /* Constrain height so body scrolls */
+}
+
+.card-header {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8fafc;
+  flex-shrink: 0;
+  /* Never shrink — stays pinned */
+  z-index: 2;
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.card-body {
+  padding: 0;
+  flex: 1;
+  overflow-y: auto;
+  /* Only the body scrolls */
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: var(--spacing-md);
+  margin-top: -10px;
+  /* Adjust for padding of container */
+}
+
+.tab-btn {
+  padding: 12px 24px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.tab-btn:hover {
+  color: var(--primary);
+}
+
+
+.tab-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--accent);
+  border-bottom-width: 3px;
+}
+
+
+
+/* Table */
+.data-table-wrapper {
+  overflow: visible;
+  /* Ensure sticky headers work */
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.data-table th {
+  background-color: #f8fafc;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--primary);
+  padding: 16px;
+  white-space: nowrap;
+  position: sticky;
+  /* Sticky header */
+  top: 0;
+  z-index: 1;
+}
+
+.data-table tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* Cells */
+.cell-year {
+  min-width: 140px;
+}
+
+.cell-no-enrollment {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+/* Highlight for current year column */
+.cell-current {
+  background-color: #FFFAE5 !important;
+  /* Light yellow highlight */
+}
+
+th.cell-current {
+  background-color: #FFF3C4 !important;
+  /* Slightly deeper yellow for header */
+}
+
+.data-table tr:hover td.cell-current {
+  background-color: #FFF9DB !important;
+  /* Maintain highlight on hover */
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: full;
+  /* Pills */
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 4px;
+  transition: background-color 0.15s ease;
+}
+
+/* Grade Level Colors - Updated */
+.tag-grade {
+  background-color: #e2e8f0;
+  /* Default Grey */
+  color: #475569;
+}
+
+.tag-grade-6 {
+  background-color: #FFF0E0;
+  color: #C2590A;
+  /* Orange */
+}
+
+.tag-grade-7 {
+  background-color: #dbeafe;
+  color: #1e40af;
+  /* Blue */
+}
+
+.tag-grade-8 {
+  background-color: #D1FAE5;
+  color: #065F46;
+  /* Green */
+}
+
+
+.course-text {
+  display: block;
+  font-weight: 500;
+  font-size: 0.8rem;
+  line-height: 1.2;
+  color: var(--text-main);
+  margin-top: 4px;
+}
+
+/* Search Bar */
+.search-container {
+  margin-bottom: var(--spacing-md);
+  position: relative;
+  max-width: 400px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 16px 10px 40px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+/* Student Status Classification Tags */
+.tag-status-green {
+  background-color: #D1FAE5;
+  color: #065F46;
+}
+
+.tag-status-yellow {
+  background-color: #FEF3C7;
+  color: #92400E;
+}
+
+.tag-status-red {
+  background-color: #FEE2E2;
+  color: #991B1B;
+}
+
+.tag-status-neutral {
+  background-color: #f1f5f9;
+  color: #94a3b8;
+}

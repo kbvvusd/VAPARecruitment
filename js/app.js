@@ -273,6 +273,8 @@ function getClassification(student) {
 function setClassificationFilter(filterType) {
     activeClassificationFilter = filterType;
     renderMainContent();
+    // Apply filter after DOM updates
+    setTimeout(() => filterTable(), 0);
 }
 
 function filterTable() {

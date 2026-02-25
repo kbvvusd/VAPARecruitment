@@ -4,6 +4,7 @@
 let dashboardData = {};
 let currentSchool = null;
 let currentProgram = null;
+let activeClassificationFilter = null; // Track active classification filter
 
 // DOM Elements
 const schoolDropdown = document.getElementById('school-dropdown');
@@ -107,8 +108,23 @@ function renderMainContent() {
                         <input type="text" id="student-search" class="search-input" placeholder="Search students..." onkeyup="filterTable()">
                     </div>
                 </div>
-                
+
                 <div class="card-body">
+                    <div class="filter-bar" style="margin-bottom: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+                        <span style="font-weight: 500; color: var(--text-primary);">Filter by:</span>
+                        <button class="filter-chip ${!activeClassificationFilter ? 'active' : ''}" onclick="setClassificationFilter(null)">
+                            <i class="fa-solid fa-users"></i> All Students
+                        </button>
+                        <button class="filter-chip tag-status-green ${activeClassificationFilter === 'nerd' ? 'active' : ''}" onclick="setClassificationFilter('nerd')">
+                            <i class="fa-solid fa-star"></i> Hardcore Nerds
+                        </button>
+                        <button class="filter-chip tag-status-yellow ${activeClassificationFilter === 'late' ? 'active' : ''}" onclick="setClassificationFilter('late')">
+                            <i class="fa-solid fa-clock"></i> Late Starters
+                        </button>
+                        <button class="filter-chip tag-status-red ${activeClassificationFilter === 'withdrew' ? 'active' : ''}" onclick="setClassificationFilter('withdrew')">
+                            <i class="fa-solid fa-door-open"></i> Withdrew
+                        </button>
+                    </div>
                     ${renderStudentTable(schoolData[currentProgram])}
                 </div>
             </div>
@@ -129,7 +145,7 @@ function renderStudentTable(programData) {
     }
 
     const students = programData.students;
-    const years = programData.years; // List of year strings
+    const years = [...programData.years].reverse(); // Reverse year order - most recent first
 
     // Table Header
     let tableHtml = `
@@ -254,6 +270,13 @@ function getClassification(student) {
 
 // --- Interaction ---
 
+function setClassificationFilter(filterType) {
+    activeClassificationFilter = filterType;
+    renderMainContent();
+    // Apply filter after DOM updates
+    setTimeout(() => filterTable(), 0);
+}
+
 function filterTable() {
     const input = document.getElementById('student-search');
     const filter = input.value.toUpperCase();
@@ -268,12 +291,33 @@ function filterTable() {
         // Search Name (col 0) and ID (col 1)
         const nameTd = tr[i].getElementsByTagName('td')[0];
         const idTd = tr[i].getElementsByTagName('td')[1];
+        const classificationTd = tr[i].getElementsByTagName('td')[3]; // Classification column
 
         if (nameTd || idTd) {
             const nameTxt = nameTd.textContent || nameTd.innerText;
             const idTxt = idTd.textContent || idTd.innerText;
 
-            if (nameTxt.toUpperCase().indexOf(filter) > -1 || idTxt.toUpperCase().indexOf(filter) > -1) {
+            // Check search filter
+            const matchesSearch = !filter ||
+                nameTxt.toUpperCase().indexOf(filter) > -1 ||
+                idTxt.toUpperCase().indexOf(filter) > -1;
+
+            // Check classification filter
+            let matchesClassification = true;
+            if (activeClassificationFilter) {
+                const classificationTxt = classificationTd ? (classificationTd.textContent || classificationTd.innerText).toLowerCase() : '';
+
+                if (activeClassificationFilter === 'nerd') {
+                    matchesClassification = classificationTxt.includes('hardcore') || classificationTxt.includes('nerd');
+                } else if (activeClassificationFilter === 'late') {
+                    matchesClassification = classificationTxt.includes('late starter');
+                } else if (activeClassificationFilter === 'withdrew') {
+                    matchesClassification = classificationTxt.includes('withdrew');
+                }
+            }
+
+            // Show row only if it matches both filters
+            if (matchesSearch && matchesClassification) {
                 tr[i].style.display = "";
             } else {
                 tr[i].style.display = "none";

@@ -145,7 +145,7 @@ function renderStudentTable(programData) {
     }
 
     const students = programData.students;
-    const years = programData.years; // List of year strings
+    const years = [...programData.years].reverse(); // Reverse year order - most recent first
 
     // Table Header
     let tableHtml = `

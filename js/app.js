@@ -110,8 +110,8 @@ function renderMainContent() {
                 </div>
 
                 <div class="card-body">
-                    <div class="filter-bar" style="margin-bottom: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
-                        <span style="font-weight: 500; color: var(--text-primary);">Filter by:</span>
+                    <div class="filter-bar">
+                        <span class="filter-label">Filter by:</span>
                         <button class="filter-chip ${!activeClassificationFilter ? 'active' : ''}" onclick="setClassificationFilter(null)">
                             <i class="fa-solid fa-users"></i> All Students
                         </button>

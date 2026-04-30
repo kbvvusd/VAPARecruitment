@@ -6,11 +6,11 @@
 :root {
   /* Colors */
   /* Brand Blue from VVUSD Logo */
-  --primary: #235688;
-  --primary-hover: #1A436A;
+  --primary: #026fa0;
+  --primary-hover: #015881;
 
   /* Brand Yellow from VAPA Logo */
-  --accent: #FFCE4E;
+  --accent: #fcb426;
 
   --secondary: #64748B;
   /* Slate-500 */
@@ -31,18 +31,12 @@
   /* Slate-200 */
 
   /* Status Colors */
-  --status-good-bg: #D1FAE5;
-  /* Emerald-100 */
-  --status-good-text: #065F46;
-  /* Emerald-800 */
-  --status-bad-bg: #FEE2E2;
-  /* Red-100 */
-  --status-bad-text: #991B1B;
-  /* Red-800 */
-  --status-warn-bg: #FEF3C7;
-  /* Amber-100 */
-  --status-warn-text: #92400E;
-  /* Amber-800 */
+  --status-good-bg: #b2d8b1;
+  --status-good-text: #000000;
+  --status-bad-bg: #e29587;
+  --status-bad-text: #000000;
+  --status-warn-bg: #fcb426;
+  --status-warn-text: #000000;
 
   /* Spacing */
   --spacing-sm: 0.5rem;
@@ -110,7 +104,7 @@ body {
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23235688' d='M6 8.825L.35 3.175l.7-.7L6 7.425l4.95-4.95.7.7z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23026fa0' d='M6 8.825L.35 3.175l.7-.7L6 7.425l4.95-4.95.7.7z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 10px center;
   transition: border-color 0.2s, box-shadow 0.2s;
@@ -164,10 +158,10 @@ body {
 
 .top-bar-title {
   font-family: 'Shrikhand', cursive;
-  font-size: 1.6rem;
+  font-size: 2.2rem;
   font-weight: 400;
-  color: var(--primary);
-  line-height: 1.25;
+  color: var(--accent);
+  line-height: 1.2;
   letter-spacing: 0.5px;
 }
 
@@ -371,17 +365,17 @@ body {
 
 /* Highlight for current year column */
 .cell-current {
-  background-color: #FFFAE5 !important;
-  /* Light yellow highlight */
+  background-color: #fef5e0 !important;
+  /* Light brand yellow highlight */
 }
 
 th.cell-current {
-  background-color: #FFF3C4 !important;
+  background-color: #fcebc2 !important;
   /* Slightly deeper yellow for header */
 }
 
 .data-table tr:hover td.cell-current {
-  background-color: #FFF9DB !important;
+  background-color: #fae1a0 !important;
   /* Maintain highlight on hover */
 }
 
@@ -405,21 +399,21 @@ th.cell-current {
 }
 
 .tag-grade-6 {
-  background-color: #FFF0E0;
-  color: #C2590A;
-  /* Orange */
+  background-color: #fcb426;
+  color: #000000;
+  /* Brand Yellow */
 }
 
 .tag-grade-7 {
-  background-color: #dbeafe;
-  color: #1e40af;
-  /* Blue */
+  background-color: #8ecae6;
+  color: #000000;
+  /* Brand Light Blue */
 }
 
 .tag-grade-8 {
-  background-color: #D1FAE5;
-  color: #065F46;
-  /* Green */
+  background-color: #b2d8b1;
+  color: #000000;
+  /* Brand Light Green */
 }
 
 
@@ -464,18 +458,18 @@ th.cell-current {
 
 /* Student Status Classification Tags */
 .tag-status-green {
-  background-color: #D1FAE5;
-  color: #065F46;
+  background-color: #b2d8b1;
+  color: #000000;
 }
 
 .tag-status-yellow {
-  background-color: #FEF3C7;
-  color: #92400E;
+  background-color: #fcb426;
+  color: #000000;
 }
 
 .tag-status-red {
-  background-color: #FEE2E2;
-  color: #991B1B;
+  background-color: #e29587;
+  color: #000000;
 }
 
 .tag-status-neutral {
@@ -506,34 +500,35 @@ th.cell-current {
 
 .filter-chip.active {
   border-color: var(--primary);
+  background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .filter-chip.tag-status-green {
-  background-color: #D1FAE5;
-  color: #065F46;
+  background-color: #b2d8b1;
+  color: #000000;
 }
 
 .filter-chip.tag-status-green:hover {
-  background-color: #A7F3D0;
+  background-color: #9fc39e;
 }
 
 .filter-chip.tag-status-yellow {
-  background-color: #FEF3C7;
-  color: #92400E;
+  background-color: #fcb426;
+  color: #000000;
 }
 
 .filter-chip.tag-status-yellow:hover {
-  background-color: #FDE68A;
+  background-color: #e6a422;
 }
 
 .filter-chip.tag-status-red {
-  background-color: #FEE2E2;
-  color: #991B1B;
+  background-color: #e29587;
+  color: #000000;
 }
 
 .filter-chip.tag-status-red:hover {
-  background-color: #FECACA;
+  background-color: #ce877b;
 }
 
 .filter-label {
@@ -577,7 +572,7 @@ th.cell-current {
   }
 
   .top-bar-title {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
   }
 
   .school-dropdown {
@@ -623,7 +618,7 @@ th.cell-current {
 
 @media (max-width: 480px) {
   .top-bar-title {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
   }
 
   .btn {

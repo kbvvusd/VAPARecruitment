@@ -17,7 +17,9 @@ const exportBtn = document.getElementById('export-btn');
 async function init() {
     console.log("Initializing Dashboard...");
     try {
-        const response = await fetch('dashboard_data.json');
+        // Use a timestamp to bust the browser cache and ensure fresh data
+        const cacheBuster = new Date().getTime();
+        const response = await fetch(`dashboard_data.json?t=${cacheBuster}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
